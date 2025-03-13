@@ -24,3 +24,13 @@ void printmatrix(vector<vector<int>> M, size_t n){
     }
     return;
 }
+
+int main(){
+    size_t n;
+    cout << "Ingrese dimensión de la matriz a crear:"<< endl;
+    cin >> n;
+    vector<vector<int>> M = creatematrix(n);
+    
+    cout<<"\nLa matriz de forma decreciente se ve de la siguiente manera:"<< endl;
+    printmatrix(M,n);
+}
