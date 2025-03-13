@@ -24,30 +24,37 @@ bool compare(const char* s1, const char* s2){
     return compare(s1 + 1, s2 + 1);
 }
 
+void finalTime(string s1, string s2){
+    auto startTime = high_resolution_clock::now();
+    bool result = compare(s1, s2);
+    cout<< "\nResultado de comparación: "<< boolalpha<< result <<endl;
+    auto endTime = high_resolution_clock::now();
+    auto elapsedTime = duration_cast<nanoseconds>(endTime - startTime);
+    cout<<"Duracion: "<<elapsedTime.count() <<" ns\n"<< endl;
+}
+
+void finalTime(char* s1, char* s2){
+    auto startTime = high_resolution_clock::now();
+    bool result = compare(s1, s2);
+    cout<< "\nResultado de comparación: "<< boolalpha<< result <<endl;
+    auto endTime = high_resolution_clock::now();
+    auto elapsedTime = duration_cast<nanoseconds>(endTime - startTime);
+    cout<<"Duracion: "<<elapsedTime.count()<<" ns\n"<< endl;
+}
+
 
 int main(){
     string s1,s2; //CAMBIAR
-    cout << "Ingrese la primer palabra a comparar: "<< endl;
+    cout << "Ingrese la primera palabra a comparar: "<< endl;
     cin >> s1;
     cout << "Ingrese la segunda palabra a comparar: "<<endl;
     cin >> s2;
 
-    auto startTime1 = high_resolution_clock::now();
+    cout << "\n--- Comparación con std::string ---";
+    finalTime(s1, s2);
 
-    cout<< compare(s1, s2)<<endl;
-
-    auto endTime1 = high_resolution_clock::now();
-    auto elapsedTime1 = duration_cast<nanoseconds>(endTime1 - startTime1);
-
-    cout<<"A compare() utilizando <string> tardó: "<< elapsedTime1.count() << " nanosegundos"<< endl;
-
-    auto startTime = high_resolution_clock::now();
-
-    cout<< compare(s1.c_str(), s2.c_str())<<endl;
-
-    auto endTime = high_resolution_clock::now();
-    auto elapsedTime = duration_cast<nanoseconds>(endTime - startTime);
-    cout<<"A compare() utilizando *char tardó: "<< elapsedTime.count() << " nanosegundos"<< endl;
+    cout << "--- Comparación con char* ---";
+    finalTime(s1.c_str(), s2.c_str());
 
     return 0;
 }
