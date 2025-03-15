@@ -1,0 +1,10 @@
+
+[DEBUG] <error>
+[INFO] <error>
+[WARNING] <error>
+[ERROR] <No such directory>
+[CRITICAL] <error>
+<No such directory> FILE: main.cpp LINE:12
+[SECURITY] <Access Granted> -> Usuario: myusername
+[SECURITY] <Access Denied> -> Usuario: myusername
+[ERROR] <Error en ejecución: Runtime Error>
