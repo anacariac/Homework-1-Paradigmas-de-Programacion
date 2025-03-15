@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <chrono>
 using namespace std;
@@ -44,17 +45,23 @@ void finalTime(char* s1, char* s2){
 
 
 int main(){
-    string s1,s2; //CAMBIAR
-    cout << "Ingrese la primera palabra a comparar: "<< endl;
-    cin >> s1;
-    cout << "Ingrese la segunda palabra a comparar: "<<endl;
-    cin >> s2;
+    ifstream File("archivoprueba.txt");
+    if(!File){
+        cerr<<"Error al abrir el archivo"<<endl;
+        return 1;
+    }
+    string s1,s2;
 
-    cout << "\n--- Comparación con std::string ---";
-    finalTime(s1, s2);
+    while(getline(File,s1) && getline(File,s2)){
+        cout<<"====================================="<<endl;
+        cout<<s1<<" vs " <<s2<<endl;
+        cout << "\n--- Comparación con std::string ---";
+        finalTime(s1, s2);
 
-    cout << "--- Comparación con char* ---";
-    finalTime(s1.c_str(), s2.c_str());
-
+        cout << "--- Comparación con char* ---";
+        finalTime(s1.c_str(), s2.c_str());   
+    } 
+    cout<<"\nFin de los test!"<<endl;
+    File.close();
     return 0;
 }

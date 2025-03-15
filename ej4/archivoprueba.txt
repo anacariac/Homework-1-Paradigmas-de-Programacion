@@ -1,1 +1,8 @@
-Hola, 
+Hola Mundo!
+Hola mundo!
+Somos iguales
+Somos iguales
+Somos distintos
+    Somos distintos
+Texto de prueba
+Texto de prueba!
