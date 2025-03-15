@@ -9,7 +9,8 @@ vector<vector<int>> creatematrix(size_t n){
 
     for(auto& fila : M){
         for(auto& value : fila){
-            value = cont++;
+            value = cont;
+            cont +=1;
         }
     }
     return M;
