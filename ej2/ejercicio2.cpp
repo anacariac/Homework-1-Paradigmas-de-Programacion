@@ -47,12 +47,12 @@ void logMessage(const string message, const string user){
 
 
 int main(int argc, char* argv[]){
-    logMessage("error",Level::DEBUG);
-    logMessage("error",Level::INFO);
-    logMessage("error",Level::WARNING);
-    logMessage("No such directory compilation terminated.",Level::ERROR);
-    logMessage("error",Level::CRITICAL);
-    logMessage("No such directory compilation terminated.", "main.cpp", 12);
+    logMessage("Variable 'x': 2",Level::DEBUG);
+    logMessage("Initializing system",Level::INFO);
+    logMessage("Disk space below 20%",Level::WARNING);
+    logMessage("No such file or directory compilation terminated.",Level::ERROR);
+    logMessage("Segmentation fault",Level::CRITICAL);
+    logMessage("Error in file", "main.cpp", 12);
     logMessage("Access Granted","myusername");
     logMessage("Access Denied","myusername");
 
