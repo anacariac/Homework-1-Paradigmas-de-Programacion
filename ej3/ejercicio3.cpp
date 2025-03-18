@@ -4,53 +4,61 @@ using namespace std;
 
 struct node{
     int value;
-    unique_ptr<node> next;
+    shared_ptr<node> next;
 };
 struct list{
-    unique_ptr<node> head;
+    shared_ptr<node> head;
     size_t cant;
 };
 
-unique_ptr<node> create_node(int value){
-    unique_ptr<node> new_node = make_unique<node>();
+shared_ptr<node> create_node(int value){
+    shared_ptr<node> new_node = make_shared<node>(); // duda
     new_node ->value = value;
     new_node ->next = nullptr;
     return new_node;
 }
 
-unique_ptr<list> create_list(){
-    unique_ptr<list> new_list = make_unique<list>();
+shared_ptr<list> create_list(){
+    shared_ptr<list> new_list = make_shared<list>();
     new_list ->head = nullptr;
     new_list ->cant = 0;
     return new_list;
 }
 
 void push_front(list* list, int value){
-    unique_ptr<node> new_node = create_node(value);
-    new_node->next = move(list->head);
-    list->head = move(new_node);
+    shared_ptr<node> new_node = create_node(value);
+    new_node->next = (list->head);
+    list->head = (new_node);
     list->cant++;
 }
 
+shared_ptr<node>* find_prev(list* list, size_t pos){
+    if (pos == 0 || list->cant == 0) return nullptr; // No hay anterior al primer nodo
+    size_t count = 0;
+    shared_ptr<node>* temp = &(list->head);
+
+    while ((*temp)->next && count < pos - 1) {
+        temp = &((*temp)->next);
+        count++;
+    }
+    return temp; // Retornamos el nodo anterior
+}
+
 void push_back(list*list, int value){
-    unique_ptr<node> new_node = create_node(value);
+    shared_ptr<node> new_node = create_node(value);
     if(!(list->head)){
-        list->head = move(new_node);
+        list->head = (new_node);
         list->cant++;
         return;
     }
-    unique_ptr<node>* temp = &(list->head);
-    while((*temp)->next){
-        temp = &((*temp)->next);
-    }
-    (*temp)->next = move(new_node);
+    shared_ptr<node>* prev = find_prev(list,list->cant);
+    (*prev)->next = (new_node);
     list->cant++;
 }
 
 void insert(list* list, int value, size_t pos){
     if(pos==0){
         push_front(list, value);
-        list->cant++;
         return;
     }
     if(pos>=(list->cant)){
@@ -58,47 +66,36 @@ void insert(list* list, int value, size_t pos){
             cout<<"Posición mayor al largo de la lista, se insertará en el útlimo lugar"<<endl;
         }
         push_back(list, value);
-        list->cant++;
         return;
     }
-    size_t count = 0;
-    unique_ptr<node>* temp = &(list->head);
-    while(count < pos -1){
-        temp = &((*temp)->next);
-        count++;
-    }
-    unique_ptr<node> new_node = create_node(value);
-    new_node->next = move((*temp)->next);
-    (*temp)->next = move(new_node);
+    shared_ptr<node>* prev = find_prev(list,pos);
+    shared_ptr<node> new_node = create_node(value);
+    new_node->next = ((*prev)->next);
+    (*prev)->next = (new_node);
     list->cant++;
 }
 
 void erase(list* list, size_t pos){
     if(!(list->cant)) return;
     if(pos==0){
-        list->head = move(list->head->next);
+        list->head = (list->head->next);
         list->cant--;
         return;
     }
-    size_t count = 0;
-    unique_ptr<node>* temp = &(list->head);
-    while((*temp)->next && count < pos - 1){
-        temp = &((*temp)->next);
-        count++;
+    if(pos<= list->cant){
+        shared_ptr<node>* prev = find_prev(list,pos);
+        (*prev)->next = (*prev)->next->next;
+        list->cant--;
+        return;
     }
-
-    if ((*temp)->next) {
-        cout << "Posición mayor al largo de la lista, se eliminará el último elemento" << endl;
-        (*temp)->next = nullptr;  // Eliminamos el último nodo
-    } else {
-        (*temp)->next = move((*temp)->next->next);  // Eliminamos el nodo en `pos`
-    }
-    
-    list->cant--;  // Decrementamos el tamaño una sola vez
+    shared_ptr<node>* prev = find_prev(list,list->cant);
+    (*prev)->next = nullptr;
+    list->cant--;
+    return;
 }
 
 void print_list(list* list){
-    unique_ptr<node>* temp = &(list->head);
+    shared_ptr<node>* temp = &(list->head);
     for (size_t i = 0; i < list->cant; i++){
         cout<<(*temp)->value<<"->";
         temp = &((*temp)->next);
