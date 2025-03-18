@@ -1,8 +1,6 @@
 #include <iostream>
-#include <string>
 #include <fstream>
-using namespace std;
-enum class Level { DEBUG, INFO, WARNING, ERROR, CRITICAL};
+#include "ejercicio2.hpp"
 
 string convertLevel(Level severity){
     switch(severity){
