@@ -6,7 +6,7 @@ using namespace std;
 using namespace std::chrono;
 
 bool compare(string s1, string s2){
-    if(s1.empty() && s2.empty()){
+    if(s1.size() == 0 && s2.size() == 0){
         return true; 
     }
     else if(s1[0] != s2[0]){
