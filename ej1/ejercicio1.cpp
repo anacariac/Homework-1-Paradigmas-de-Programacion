@@ -3,12 +3,12 @@
 
 vector<vector<int>> creatematrix(size_t n){
 
-    vector<vector<int>> M(n,vector<int>(n));
+    vector<vector<int>> M(n,vector<int>(n)); //crea un tipo vector con n filas con n columnas
     size_t cont = 1;
 
     for(auto& fila : M){
         for(auto& value : fila){
-            value = cont;
+            value = cont; //a cada posicion de mi matriz coloco el valor que sera mi contador
             cont +=1;
         }
     }
@@ -17,8 +17,8 @@ vector<vector<int>> creatematrix(size_t n){
 
 void printmatrix(vector<vector<int>> M, size_t n){
     for(int ind = n*n; ind >0 ;ind--){
-        int i = (ind - 1) / n;
-        int j = (ind - 1) % n;
+        int i = (ind - 1) / n; // número de fila
+        int j = (ind - 1) % n; // número de columna
 
         cout << "M" << n <<"["<< i <<"]["<< j <<"] ="<< M[i][j] << endl;
     }
