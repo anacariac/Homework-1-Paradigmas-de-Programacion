@@ -5,23 +5,23 @@
 using namespace std::chrono;
 
 bool compare(string s1, string s2){
-    if(s1.size() == 0 && s2.size() == 0){
+    if(s1.size() == 0 && s2.size() == 0){ //si estan vacios los dos es verdadero
         return true; 
     }
     else if(s1[0] != s2[0]){
         return false;
     }
-    return compare(s1.substr(1), s2.substr(1));
+    return compare(s1.substr(1), s2.substr(1)); //llama a la funcion con un substring eliminando el primer elemento
 }
 
 bool compare(const char* s1, const char* s2){
-    if(*s1 == '\0' && *s2 == '\0'){
+    if(*s1 == '\0' && *s2 == '\0'){ //si estan vacios los dos es verdadero
         return true; 
     }
     else if(*s1 != *s2){
         return false;
     }
-    return compare(s1 + 1, s2 + 1);
+    return compare(s1 + 1, s2 + 1);//llama a la funcion moviendo el puntero al siguiente caracter
 }
 
 constexpr bool compare_constexpr(const char* s1, const char* s2){
@@ -31,22 +31,22 @@ constexpr bool compare_constexpr(const char* s1, const char* s2){
     else if(*s1 != *s2){
         return false;
     }
-    return compare(s1 + 1, s2 + 1);
+    return compare(s1 + 1, s2 + 1);// devuelve un constexpr
 }
 
 void finalTime(string s1, string s2){
-    auto startTime = high_resolution_clock::now();
+    auto startTime = high_resolution_clock::now(); 
     bool result = compare(s1, s2);
-    cout<< "\nResultado de comparación: "<< boolalpha<< result <<endl;
+    cout<< "\nResultado de comparación: "<< boolalpha<< result <<endl; 
     auto endTime = high_resolution_clock::now();
     auto elapsedTime = duration_cast<nanoseconds>(endTime - startTime);
-    cout<<"Duracion: "<<elapsedTime.count() <<" ns\n"<< endl;
+    cout<<"Duracion: "<<elapsedTime.count() <<" ns\n"<< endl; // diferencia de tiempo inicial menos tiempo final expresado en nanosegundos
 }
 
 void finalTime(const char* s1,const char* s2,bool expr = false){
     auto startTime = high_resolution_clock::now();
     bool result;
-    if(expr){
+    if(expr){ //si se quiere utilizar la funcion que ejecuta en tiempo de compilación
        result = compare_constexpr(s1, s2); 
     }else result = compare(s1, s2);
     cout<< "\nResultado de comparación: "<< boolalpha<< result <<endl;
@@ -57,7 +57,7 @@ void finalTime(const char* s1,const char* s2,bool expr = false){
 
 
 int main(){
-    ifstream File("archivoprueba.txt");
+    ifstream File("archivoprueba.txt");  //archivo con oraciones de prueba
     if(!File){
         cerr<<"Error al abrir el archivo"<<endl;
         return 1;
