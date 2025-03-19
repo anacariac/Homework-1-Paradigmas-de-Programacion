@@ -88,7 +88,7 @@ void erase(list* list, size_t pos){
         list->cant--;
         return;
     }
-     cout<<"Posición mayor al largo de la lista, se eliminará el útlimo elemento"<<endl;
+    cout<<"Posición mayor al largo de la lista, se eliminará el útlimo elemento"<<endl;
     shared_ptr<node>* prev = find_prev(list,list->cant);
     (*prev)->next = nullptr;
     list->cant--;

@@ -1,8 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <chrono>
-using namespace std;
+#include "ejercicio4.hpp"
 using namespace std::chrono;
 
 bool compare(string s1, string s2){
