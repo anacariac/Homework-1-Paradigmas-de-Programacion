@@ -43,7 +43,7 @@ void finalTime(string s1, string s2){
     cout<<"Duracion: "<<elapsedTime.count() <<" ns\n"<< endl; // diferencia de tiempo inicial menos tiempo final expresado en nanosegundos
 }
 
-void finalTime(const char* s1,const char* s2,bool expr = false){
+void finalTime(const char* s1,const char* s2,bool expr){
     auto startTime = high_resolution_clock::now();
     bool result;
     if(expr){ //si se quiere utilizar la funcion que ejecuta en tiempo de compilación

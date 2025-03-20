@@ -107,33 +107,65 @@ void print_list(list* list){
 int main(){
     auto my_list = create_list();
 
+    // Insertar en la cabeza y en la cola
     push_front(my_list.get(), 10);
     push_front(my_list.get(), 20);
     push_back(my_list.get(), 30);
     push_back(my_list.get(), 40);
-    insert(my_list.get(), 25, 2);  
+    insert(my_list.get(), 25, 2);
 
-    cout << "Lista después de insertar elementos: ";
+    cout << "\nLista después de insertar elementos: ";
     print_list(my_list.get());  
 
+    // Borrar en una posición intermedia
     erase(my_list.get(), 2);
-    cout << "Lista después de borrar el nodo en posición 2: ";
+    cout << "\nLista después de borrar el nodo en posición 2: ";
     print_list(my_list.get());  // Debería mostrar: 20->10->30->40->NULL
 
     // Borrar el primer nodo
     erase(my_list.get(), 0);
-    cout << "Lista después de borrar el primer nodo: ";
+    cout << "\nLista después de borrar el primer nodo: ";
     print_list(my_list.get());  // Debería mostrar: 10->30->40->NULL
 
     // Insertar en la última posición (pos > cant)
-    insert(my_list.get(), 50, 10);  // La lista tiene 3 elementos, por lo que se debe insertar al final
-    cout << "Lista después de insertar 50 al final: ";
+    insert(my_list.get(), 50, 10);  
+    cout << "\nLista después de insertar 50 al final: ";
     print_list(my_list.get());  // Debería mostrar: 10->30->40->50->NULL
 
     // Borrar el último nodo
     erase(my_list.get(), 3);
-    cout << "Lista después de borrar el último nodo: ";
+    cout << "\nLista después de borrar el último nodo: ";
     print_list(my_list.get());  // Debería mostrar: 10->30->40->NULL
+
+    // 🔹 Insertar en la posición 1
+    insert(my_list.get(), 15, 1);
+    cout << "\nLista después de insertar 15 en posición 1: ";
+    print_list(my_list.get());  // Debería mostrar: 10->15->30->40->NULL
+
+    // 🔹 Insertar en la cabeza (posición 0)
+    insert(my_list.get(), 5, 0);
+    cout << "\nLista después de insertar 5 en la cabeza: ";
+    print_list(my_list.get());  // Debería mostrar: 5->10->15->30->40->NULL
+
+    // 🔹 Intentar eliminar un nodo fuera del rango (debería eliminar el último)
+    erase(my_list.get(), 10);
+    cout << "\nLista después de intentar borrar en pos > cant: ";
+    print_list(my_list.get());  // Debería mostrar: 5->10->15->30->NULL
+
+    // 🔹 Eliminar todos los nodos uno por uno
+    erase(my_list.get(), 0);
+    erase(my_list.get(), 0);
+    erase(my_list.get(), 0);
+    erase(my_list.get(), 0);
+    
+    cout << "\nLista después de eliminar todos los nodos: ";
+    print_list(my_list.get());  // Debería mostrar: NULL
+
+    // 🔹 Insertar nuevamente después de vaciar la lista
+    push_front(my_list.get(), 100);
+    push_front(my_list.get(), 200);
+    cout << "\nLista después de insertar elementos en una lista vacía: ";
+    print_list(my_list.get());  // Debería mostrar: 200->100->NULL
 
     return 0;
 }

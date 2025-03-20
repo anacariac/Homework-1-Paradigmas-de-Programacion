@@ -8,8 +8,9 @@ Este ejercicio genera una **matriz cuadrada `n x n`**, la llena con valores secu
 - `printmatrix(M, n)`: Imprime los valores de la matriz en orden decreciente.
 - `main()`: Pide al usuario un tamaño `n`, genera la matriz y la imprime.
 
-###  **Ejemplo de Ejecución**
-
+###  **Cómo ejecutarlo**
+g++ ejercicio1.cpp -Wall -o ejecutable.exe
+valgrind ./ejecutable.exe
 
 ---
 
@@ -25,8 +26,17 @@ Este ejercicio implementa un **sistema de logs** que registra eventos en un arch
 - `main()`: Genera eventos de prueba y los registra en el log.
 
 ###  **Aclaración del `Runtime Error`**
-Si se quiere correr el programa con el runtime error entonces al momento de complilar, luego del ejecutable, haga espacio y coloque cualquier caracter que usted desee, de esa manera además de los demás ejemplos tendra uno de runtime error. El ejemplo de como compilarlo estará en el archivo de texto que se mandó en conjunto del link del repositorio.
+Si se quiere correr el programa con el runtime error entonces al momento de ejecutar, luego del ejecutable, haga espacio y coloque cualquier caracter que usted desee, de esa manera, además de los demás ejemplos, tendrá uno de runtime error.
 
+###  **Cómo ejecutarlo**
+
+## Sin Runtime Error
+g++ ejercicio2.cpp -Wall -o ejecutable.exe
+valgrind ./ejecutable.exe
+
+## Sin Runtime Error
+g++ ejercicio2.cpp -Wall -o ejecutable.exe 
+valgrind ./ejecutable.exe error
 ---
 
 ##  **Ejercicio 3 - Lista Enlazada con `shared_ptr`**
@@ -41,6 +51,10 @@ Implementación de una **lista enlazada dinámica** en C++ utilizando **smart po
 - `insert(list, value, pos)`: Inserta un nodo en una posición específica.
 - `erase(list, pos)`: Elimina un nodo de una posición dada.
 - `print_list(list)`: Imprime la lista enlazada.
+
+###  **Cómo ejecutarlo**
+g++ ejercicio3.cpp -Wall -o ejecutable.exe
+valgrind ./ejecutable.exe
 
 ---
 
@@ -64,6 +78,12 @@ Este ejercicio compara dos cadenas de texto utilizando **tres métodos distintos
 ###  **¿Por qué `constexpr char*` es aún más rápido?**
 - Un `constexpr` se evalúa en **tiempo de compilación**, eliminando completamente la ejecución en **runtime**.
 - Si la comparación es **determinista**, es decir que las variables estan definidas en el main como constexpr , el compilador optimiza la función para que se ejecute en `O(1)`.
+
+###  **Cómo ejecutarlo**
+g++ ejercicio4.cpp -Wall -o ejecutable.exe
+valgrind ./ejecutable.exe 
+./ejecutable.exe 
+-> con valgrind tardará más nanosegundos que si no se corre con valgrind
 
 ---
 
