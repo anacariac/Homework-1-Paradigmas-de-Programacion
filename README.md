@@ -46,6 +46,7 @@ Implementación de una **lista enlazada dinámica** en C++ utilizando **smart po
 ###  **Implementación**
 - `create_list()`: Crea una lista vacía.
 - `create_node(value)`: Crea un nuevo nodo con un valor dado.
+- `find_prev(list, pos)`: Busca el nodo previo dada una posición
 - `push_front(list, value)`: Inserta un nodo al frente de la lista.
 - `push_back(list, value)`: Inserta un nodo al final de la lista.
 - `insert(list, value, pos)`: Inserta un nodo en una posición específica.
