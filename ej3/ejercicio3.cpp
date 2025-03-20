@@ -32,13 +32,13 @@ void push_front(list* list, int value){
     list->cant++;
 }
 
-shared_ptr<node>* find_prev(list* list, size_t pos){
+shared_ptr<node> find_prev(list* list, size_t pos){
     if (pos == 0 || list->cant == 0) return nullptr; // No hay anterior al primer nodo
     size_t count = 0;
-    shared_ptr<node>* temp = &(list->head); 
+    shared_ptr<node> temp = (list->head); 
 
-    while ((*temp)->next && count < pos - 1) {
-        temp = &((*temp)->next);
+    while ((temp)->next && count < pos - 1) {
+        temp = ((temp)->next);
         count++;
     }
     return temp; // Retornamos el nodo anterior
@@ -51,8 +51,8 @@ void push_back(list*list, int value){
         list->cant++;
         return;
     }
-    shared_ptr<node>* prev = find_prev(list,list->cant);//encuentro el previo
-    (*prev)->next = (new_node);
+    shared_ptr<node> prev = find_prev(list,list->cant);//encuentro el previo
+    (prev)->next = (new_node);
     list->cant++;
 }
 
@@ -68,10 +68,10 @@ void insert(list* list, int value, size_t pos){
         push_back(list, value);
         return;
     }
-    shared_ptr<node>* prev = find_prev(list,pos);//encuentro el previo
+    shared_ptr<node> prev = find_prev(list,pos);//encuentro el previo
     shared_ptr<node> new_node = create_node(value);
-    new_node->next = ((*prev)->next);
-    (*prev)->next = (new_node);
+    new_node->next = ((prev)->next);
+    (prev)->next = (new_node);
     list->cant++;
 }
 
@@ -83,23 +83,23 @@ void erase(list* list, size_t pos){
         return;
     }
     if(pos<= list->cant){
-        shared_ptr<node>* prev = find_prev(list,pos); //encuentro el previo
-        (*prev)->next = (*prev)->next->next;
+        shared_ptr<node> prev = find_prev(list,pos); //encuentro el previo
+        (prev)->next = (prev)->next->next;
         list->cant--;
         return;
     }
     cout<<"Posición mayor al largo de la lista, se eliminará el útlimo elemento"<<endl;
-    shared_ptr<node>* prev = find_prev(list,list->cant);
-    (*prev)->next = nullptr;
+    shared_ptr<node> prev = find_prev(list,list->cant);
+    (prev)->next = nullptr;
     list->cant--;
     return;
 }
 
 void print_list(list* list){
-    shared_ptr<node>* temp = &(list->head); //preguntar
+    shared_ptr<node> temp = (list->head); //preguntar
     for (size_t i = 0; i < list->cant; i++){
-        cout<<(*temp)->value<<"->";
-        temp = &((*temp)->next);
+        cout<<(temp)->value<<"->";
+        temp = ((temp)->next);
     }
     cout<<"NULL\n"<<endl;
 }

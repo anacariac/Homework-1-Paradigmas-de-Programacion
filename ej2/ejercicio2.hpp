@@ -16,6 +16,7 @@ string convertLevel(Level severity);
  */
 void logMessage(const string message, Level severity);
 
+
 void logMessage(const string message, const string file, int line);
 
 void logMessage(const string message, const string user);
