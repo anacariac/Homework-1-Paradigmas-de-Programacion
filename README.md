@@ -9,8 +9,8 @@ Este ejercicio genera una **matriz cuadrada `n x n`**, la llena con valores secu
 - `main()`: Pide al usuario un tamaño `n`, genera la matriz y la imprime.
 
 ###  **Cómo ejecutarlo**
-g++ ejercicio1.cpp -Wall -o ejecutable.exe
-valgrind ./ejecutable.exe
+- g++ ejercicio1.cpp -Wall -o ejecutable.exe
+- valgrind ./ejecutable.exe
 
 ---
 
@@ -31,12 +31,12 @@ Si se quiere correr el programa con el runtime error entonces al momento de ejec
 ###  **Cómo ejecutarlo**
 
 ## Sin Runtime Error
-g++ ejercicio2.cpp -Wall -o ejecutable.exe
-valgrind ./ejecutable.exe
+- g++ ejercicio2.cpp -Wall -o ejecutable.exe
+- valgrind ./ejecutable.exe
 
-## Sin Runtime Error
-g++ ejercicio2.cpp -Wall -o ejecutable.exe 
-valgrind ./ejecutable.exe error
+## Con Runtime Error
+- g++ ejercicio2.cpp -Wall -o ejecutable.exe 
+- valgrind ./ejecutable.exe error
 ---
 
 ##  **Ejercicio 3 - Lista Enlazada con `shared_ptr`**
@@ -46,6 +46,7 @@ Implementación de una **lista enlazada dinámica** en C++ utilizando **smart po
 ###  **Implementación**
 - `create_list()`: Crea una lista vacía.
 - `create_node(value)`: Crea un nuevo nodo con un valor dado.
+- `find_prev(list, pos)`: Busca el nodo previo dada una posición
 - `push_front(list, value)`: Inserta un nodo al frente de la lista.
 - `push_back(list, value)`: Inserta un nodo al final de la lista.
 - `insert(list, value, pos)`: Inserta un nodo en una posición específica.
@@ -53,8 +54,8 @@ Implementación de una **lista enlazada dinámica** en C++ utilizando **smart po
 - `print_list(list)`: Imprime la lista enlazada.
 
 ###  **Cómo ejecutarlo**
-g++ ejercicio3.cpp -Wall -o ejecutable.exe
-valgrind ./ejecutable.exe
+- g++ ejercicio3.cpp -Wall -o ejecutable.exe
+- valgrind ./ejecutable.exe
 
 ---
 
@@ -80,9 +81,9 @@ Este ejercicio compara dos cadenas de texto utilizando **tres métodos distintos
 - Si la comparación es **determinista**, es decir que las variables estan definidas en el main como constexpr , el compilador optimiza la función para que se ejecute en `O(1)`.
 
 ###  **Cómo ejecutarlo**
-g++ ejercicio4.cpp -Wall -o ejecutable.exe
-valgrind ./ejecutable.exe 
-./ejecutable.exe 
+- g++ ejercicio4.cpp -Wall -o ejecutable.exe
+- valgrind ./ejecutable.exe 
+- ./ejecutable.exe 
 -> con valgrind tardará más nanosegundos que si no se corre con valgrind
 
 ---
