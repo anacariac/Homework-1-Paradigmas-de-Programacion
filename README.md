@@ -34,7 +34,7 @@ Si se quiere correr el programa con el runtime error entonces al momento de ejec
 - g++ ejercicio2.cpp -Wall -o ejecutable.exe
 - valgrind ./ejecutable.exe
 
-## Sin Runtime Error
+## Con Runtime Error
 - g++ ejercicio2.cpp -Wall -o ejecutable.exe 
 - valgrind ./ejecutable.exe error
 ---
