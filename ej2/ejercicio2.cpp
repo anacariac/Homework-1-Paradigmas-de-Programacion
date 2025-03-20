@@ -3,7 +3,7 @@
 #include "ejercicio2.hpp"
 
 string convertLevel(Level severity){
-    switch(severity){
+    switch(severity){   // segun la severidad retorna el string correspondiente al enum class creado
         case Level :: DEBUG: return "[DEBUG]";
         case Level :: INFO: return "[INFO]";
         case Level :: WARNING: return "[WARNING]";
@@ -18,7 +18,7 @@ void logMessage(const string message, Level severity){
     if(!File){
         cerr <<"Error no se pudo abrir el archivo"<<endl;
     } 
-    File << convertLevel(severity) << " <" <<message<< ">"<<endl;
+    File << convertLevel(severity) << " <" <<message<< ">"<<endl; //dentro del archivo escribe la severidad con el mensaje 
     File.close();
     return;
 }
@@ -28,7 +28,7 @@ void logMessage(const string message, const string file, int line){
     if(!File){
         cerr <<"Error no se pudo abrir el archivo"<<endl;
     } 
-    File << "<" <<message<< ">"<<" FILE: "<<file<<" LINE:"<<line<<endl;
+    File << "<" <<message<< ">"<<" FILE: "<<file<<" LINE:"<<line<<endl;//dentro del archivo escribe el mensaje y en donde se encuentra el error
     File.close();
     return;
 }
@@ -38,7 +38,7 @@ void logMessage(const string message, const string user){
     if(!File){
         cerr <<"Error no se pudo abrir el archivo"<<endl;
     } 
-    File << "[SECURITY]"<< " <" <<message<< ">"<<" -> Usuario: "<<user<<endl;
+    File << "[SECURITY]"<< " <" <<message<< ">"<<" -> Usuario: "<<user<<endl;//dentro del archivo escribe la severidad con el mensaje y datos del usuario
     File.close();
     return;
 }

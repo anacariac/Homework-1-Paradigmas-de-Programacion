@@ -3,12 +3,12 @@
 
 vector<vector<int>> creatematrix(size_t n){
 
-    vector<vector<int>> M(n,vector<int>(n)); //crea un tipo vector con n filas con n columnas
+    vector<vector<int>> M(n,vector<int>(n)); //crea un tipo vector con n filas con n columnas (matriz cuadrada n x n)
     size_t cont = 1;
 
     for(auto& fila : M){
         for(auto& value : fila){
-            value = cont; //a cada posicion de mi matriz coloco el valor que sera mi contador
+            value = cont; //asigna valores secuenciales a la matriz
             cont +=1;
         }
     }
@@ -27,7 +27,7 @@ void printmatrix(vector<vector<int>> M, size_t n){
 
 int main(){
     size_t n;
-    cout << "Ingrese dimensión de la matriz a crear:"<< endl;
+    cout << "Ingrese dimensión de la matriz a crear:"<< endl; //solicita al usuario un tamaño de matriz, la genera y la imprime.
     cin >> n;
     vector<vector<int>> M = creatematrix(n);
     
