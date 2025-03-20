@@ -36,6 +36,7 @@ valgrind ./ejecutable.exe
 
 ## Sin Runtime Error
 g++ ejercicio2.cpp -Wall -o ejecutable.exe 
+
 valgrind ./ejecutable.exe error
 ---
 
