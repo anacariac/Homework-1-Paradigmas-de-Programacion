@@ -1,4 +1,4 @@
-##Homework-1-Paradigmas-de-Programacion
+## Homework-1-Paradigmas-de-Programacion
 ##  **Ejercicio 1 - Matriz Cuadrada y Recorrido Decreciente**
 ###  **Descripción**
 Este ejercicio genera una **matriz cuadrada `n x n`**, la llena con valores secuenciales (`1, 2, 3, ..., n*n`) y la imprime en **orden decreciente** de índices.
@@ -61,11 +61,11 @@ Este ejercicio compara dos cadenas de texto utilizando **tres métodos distintos
 - `compare_constexpr(const char* s1, const char* s2)`: Compara dos cadenas usando `constexpr char*`.
 - `finalTime()`: Mide el tiempo de ejecución de cada método.
 
-### ❓ **¿Por qué `char*` es más rápido que `std::string`?**
+###  **¿Por qué `char*` es más rápido que `std::string`?**
 - `std::string` maneja la memoria internamente, lo que agrega **sobrecarga**.
 - `char*` evita la asignación dinámica de memoria, lo que lo hace **más rápido en operaciones simples**.
 
-### ❓ **¿Por qué `constexpr char*` es aún más rápido?**
+###  **¿Por qué `constexpr char*` es aún más rápido?**
 - Un `constexpr` se evalúa en **tiempo de compilación**, eliminando completamente la ejecución en **runtime**.
 - Si la comparación es **determinista**, el compilador optimiza la función para que se ejecute en `O(1)`.
 
