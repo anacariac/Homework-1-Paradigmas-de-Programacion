@@ -96,7 +96,7 @@ void erase(list* list, size_t pos){
 }
 
 void print_list(list* list){
-    shared_ptr<node> temp = (list->head); //preguntar
+    shared_ptr<node> temp = (list->head); 
     for (size_t i = 0; i < list->cant; i++){
         cout<<(temp)->value<<"->";
         temp = ((temp)->next);
