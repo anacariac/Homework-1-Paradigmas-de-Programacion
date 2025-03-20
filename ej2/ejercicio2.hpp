@@ -11,12 +11,22 @@ string convertLevel(Level severity);
 
 /*
  Registra un mensaje en un archivo de log con un nivel de severidad.
- message<string> Mensaje a registrar.
+ message<const string> Mensaje a registrar.
  severity<enum class> Nivel de severidad del mensaje.
  */
 void logMessage(const string message, Level severity);
 
-
+/*
+ Registra un mensaje en un archivo de log junto con el nombre del archivo y el número de línea.
+ message<const string> Mensaje a registrar.
+ file<const string> Nombre del archivo donde ocurrió el evento.
+ line<int> Número de línea en el archivo donde ocurrió el evento.
+ */
 void logMessage(const string message, const string file, int line);
 
+/*
+Registra un mensaje de seguridad en un archivo de log, asociado a un usuario específico.
+message<const string> Mensaje de seguridad a registrar.
+user<const string> Nombre del usuario asociado al evento.
+ */
 void logMessage(const string message, const string user);
