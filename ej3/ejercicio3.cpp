@@ -12,7 +12,7 @@ struct list{
 };
 
 shared_ptr<node> create_node(int value){
-    shared_ptr<node> new_node = make_shared<node>(); // duda
+    shared_ptr<node> new_node = make_shared<node>();
     new_node ->value = value;
     new_node ->next = nullptr;
     return new_node;
@@ -22,12 +22,12 @@ shared_ptr<list> create_list(){
     shared_ptr<list> new_list = make_shared<list>();
     new_list ->head = nullptr;
     new_list ->cant = 0;
-    return new_list;
+    return new_list; //crea lista vacía
 }
 
 void push_front(list* list, int value){
     shared_ptr<node> new_node = create_node(value);
-    new_node->next = (list->head);
+    new_node->next = (list->head); //el head de la lista ahora es el siguiente del nuevo nodo
     list->head = (new_node);
     list->cant++;
 }
@@ -35,7 +35,7 @@ void push_front(list* list, int value){
 shared_ptr<node>* find_prev(list* list, size_t pos){
     if (pos == 0 || list->cant == 0) return nullptr; // No hay anterior al primer nodo
     size_t count = 0;
-    shared_ptr<node>* temp = &(list->head);
+    shared_ptr<node>* temp = &(list->head); 
 
     while ((*temp)->next && count < pos - 1) {
         temp = &((*temp)->next);
@@ -46,18 +46,18 @@ shared_ptr<node>* find_prev(list* list, size_t pos){
 
 void push_back(list*list, int value){
     shared_ptr<node> new_node = create_node(value);
-    if(!(list->head)){
+    if(!(list->head)){// si la lista esta vacía
         list->head = (new_node);
         list->cant++;
         return;
     }
-    shared_ptr<node>* prev = find_prev(list,list->cant);
+    shared_ptr<node>* prev = find_prev(list,list->cant);//encuentro el previo
     (*prev)->next = (new_node);
     list->cant++;
 }
 
 void insert(list* list, int value, size_t pos){
-    if(pos==0){
+    if(pos==0){//si quiero insertarlo en el primer lugar
         push_front(list, value);
         return;
     }
@@ -68,7 +68,7 @@ void insert(list* list, int value, size_t pos){
         push_back(list, value);
         return;
     }
-    shared_ptr<node>* prev = find_prev(list,pos);
+    shared_ptr<node>* prev = find_prev(list,pos);//encuentro el previo
     shared_ptr<node> new_node = create_node(value);
     new_node->next = ((*prev)->next);
     (*prev)->next = (new_node);
@@ -83,7 +83,7 @@ void erase(list* list, size_t pos){
         return;
     }
     if(pos<= list->cant){
-        shared_ptr<node>* prev = find_prev(list,pos);
+        shared_ptr<node>* prev = find_prev(list,pos); //encuentro el previo
         (*prev)->next = (*prev)->next->next;
         list->cant--;
         return;
@@ -96,7 +96,7 @@ void erase(list* list, size_t pos){
 }
 
 void print_list(list* list){
-    shared_ptr<node>* temp = &(list->head);
+    shared_ptr<node>* temp = &(list->head); //preguntar
     for (size_t i = 0; i < list->cant; i++){
         cout<<(*temp)->value<<"->";
         temp = &((*temp)->next);
